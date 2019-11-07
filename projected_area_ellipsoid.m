@@ -26,7 +26,7 @@ V = [v1,v2,v3];
 %Create the eigenvalues from the lengths
 D = diag([1/Lx^2,1/Ly^2,1/Lz^2]);
 %Calculate the eliipsoid on quadratic form.
-A = (V*D)\(V);
+A = V*D/V;
 
 
 %Calculate the projected ellipse
