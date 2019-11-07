@@ -16,7 +16,7 @@ function [Ax,Ay,Az] = projected_area_ellipsoid(Lx,Ly,Lz,phi,theta)
 %   Ay:     Projected area in y direction
 %   Az: 	Projected area in z direction
 %------------------------------------------------
-verbose = 0
+verbose = 0;
 %Create the eigenvectors from the input angles
 v1 = [cos(phi)*cos(theta),sin(phi)*cos(theta),-sin(theta)]'; %"rotated x-axis"
 v2 = [-sin(phi),cos(phi),0]';    %"rotated y-axis"
@@ -42,7 +42,7 @@ Az = Calc_area(Pz);
 
 
 %
-if verbose = 1
+if verbose == 1
     isosurface(X, Y, Z, A(1,1)*X.^2 + 2*A(1,2)*X.*Y + A(2,2)*Y.^2 +...
         A(3,3)*Z.^2 + 2*A(1,3)*X.*Z+ 2*A(2,3)*Y.*Z, r^2);
     camlight(60,0);shading flat;view([30,15]);
