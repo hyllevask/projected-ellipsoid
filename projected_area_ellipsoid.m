@@ -1,4 +1,4 @@
-function [Ax,Ay,Az] = projected_area_ellipsoid(Lx,Ly,Lz,phi,theta)
+function [Ax,Ay,Az,ARx,ARy,ARz] = projected_area_ellipsoid(Lx,Ly,Lz,phi,theta)
 %projected_area_ellipsoid Calculates the projected area in the x,y,z
 %directions.
 % See https://math.stackexchange.com/questions/2438495/showing-positive-definiteness-in-the-projection-of-ellipsoid
@@ -39,6 +39,9 @@ Ax = Calc_area(Px);
 Ay = Calc_area(Py);
 Az = Calc_area(Pz);
 
+ARx = Calc_aspect(Px);
+ARy = Calc_aspect(Py);
+ARz = Calc_aspect(Pz);
 
 
 %
@@ -78,4 +81,7 @@ else
     error('Invalid Direction')
 end
 
+end
+function AR = Calc_aspect(P)
+AR = max([P(1,1),P(2,2)])/min([P(1,1),P(2,2)]);
 end
